@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsPilot — Your AI Co-Pilot for WhatsApp Business</title>
+<meta name="description" content="WhatsPilot turns WhatsApp into a full sales channel: AI auto-replies trained on your business, automatic lead scoring, no-code automation, and analytics that tell you what to do next.">
+
+<!-- TODO: replace the placeholder https://whatspilot.com/ URLs below with the real production domain once one is live. -->
+<link rel="canonical" href="https://whatspilot.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WhatsPilot">
+<meta property="og:url" content="https://whatspilot.com/">
+<meta property="og:title" content="WhatsPilot — Your AI Co-Pilot for WhatsApp Business">
+<meta property="og:description" content="WhatsPilot turns WhatsApp into a full sales channel: AI auto-replies trained on your business, automatic lead scoring, no-code automation, and analytics that tell you what to do next.">
+<!-- Social preview image: whatspilot-og-image.png (1200x630, saved alongside this file). og:image/twitter:image below already point at it - the URL will resolve once this file is hosted at the real domain (see the canonical-URL TODO above). -->
+<meta property="og:image" content="https://whatspilot.com/whatspilot-og-image.png">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WhatsPilot — Your AI Co-Pilot for WhatsApp Business">
+<meta name="twitter:description" content="WhatsPilot turns WhatsApp into a full sales channel: AI auto-replies trained on your business, automatic lead scoring, no-code automation, and analytics that tell you what to do next.">
+<meta name="twitter:image" content="https://whatspilot.com/whatspilot-og-image.png">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L4 6V12C4 16.5 7.5 20.7 12 22C16.5 20.7 20 16.5 20 12V6L12 2Z' fill='%2312805A'/%3E%3Cpath d='M9 12.5L11 14.5L15 10' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "WhatsPilot",
+  "description": "WhatsPilot turns WhatsApp into a full sales channel: AI auto-replies trained on your business, automatic lead scoring, no-code automation, and analytics that tell you what to do next.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-900: #0B3B2E;
+    --green-700: #0F6B4C;
+    --green-600: #12805A;
+    --green-500: #17A06E;
+    --green-100: #E4F5EC;
+    --green-50: #F2FAF6;
+    --coral: #FF6B4A;
+    --coral-dark: #E85234;
+    --navy: #0B1220;
+    --ink: #1B2430;
+    --muted: #5B6672;
+    --line: #E6EAE7;
+    --bg: #FBFBF9;
+    --card: #FFFFFF;
+    --radius: 16px;
+    --shadow: 0 10px 30px rgba(11, 59, 46, 0.08);
+    --shadow-lg: 0 20px 60px rgba(11, 59, 46, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .brand {
+    font-family: 'Manrope', 'Inter', sans-serif;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section { position: relative; }
+
+  /* ---------- Nav ---------- */
+
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(251, 251, 249, 0.88);
+    backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 20px;
+  }
+
+  .brand .mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, var(--green-500), var(--green-700));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(15, 107, 76, 0.35);
+  }
+
+  .brand .mark svg { width: 18px; height: 18px; }
+
+  nav.links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  nav.links a {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.15s ease;
+  }
+
+  nav.links a:hover { color: var(--navy); }
+
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .nav-toggle svg { width: 20px; height: 20px; color: var(--navy); }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 24px 18px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+
+  .mobile-menu a {
+    padding: 12px 4px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  .mobile-menu.open { display: flex; }
+
+  .skip-link {
+    position: absolute;
+    left: 12px;
+    top: -48px;
+    background: var(--navy);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    z-index: 100;
+    transition: top 0.15s ease;
+  }
+
+  .skip-link:focus { top: 12px; }
+
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 28px;
+    transform: translate(-50%, 20px);
+    max-width: min(420px, calc(100vw - 32px));
+    background: var(--navy);
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    box-shadow: var(--shadow-lg);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14.5px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: var(--coral);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(255, 107, 74, 0.35);
+  }
+
+  .btn-primary:hover { background: var(--coral-dark); transform: translateY(-1px); }
+
+  .btn-dark {
+    background: var(--navy);
+    color: #fff;
+  }
+
+  .btn-dark:hover { background: #1a2436; transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--navy);
+    border-color: var(--line);
+  }
+
+  .btn-ghost:hover { border-color: var(--navy); }
+
+  .btn-sm { padding: 9px 18px; font-size: 13.5px; }
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    padding: 90px 0 60px;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-100);
+    color: var(--green-700);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+  }
+
+  .eyebrow .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green-500);
+  }
+
+  h1.hero-title {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.08;
+    margin: 0 0 22px;
+  }
+
+  h1.hero-title .accent { color: var(--green-600); }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 0 32px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .hero-note {
+    font-size: 13.5px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-note svg { width: 16px; height: 16px; color: var(--green-600); flex-shrink: 0; }
+
+  /* ---------- Phone mockup ---------- */
+
+  .phone-stage {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .phone-stage::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, var(--green-100) 0%, transparent 70%);
+    top: -40px;
+    z-index: 0;
+  }
+
+  .phone {
+    position: relative;
+    z-index: 1;
+    width: 300px;
+    background: var(--navy);
+    border-radius: 34px;
+    padding: 12px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .phone-screen {
+    background: #EDF3EF;
+    border-radius: 24px;
+    overflow: hidden;
+    height: 560px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .phone-bar {
+    background: var(--green-700);
+    color: #fff;
+    padding: 16px 16px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .phone-bar .avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+  }
+
+  .phone-bar .status { font-size: 11.5px; font-weight: 400; opacity: 0.85; }
+
+  .chat-body {
+    flex: 1;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+  }
+
+  .bubble {
+    max-width: 78%;
+    padding: 9px 12px;
+    border-radius: 14px;
+    font-size: 12.8px;
+    line-height: 1.4;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    animation: rise 0.5s ease both;
+  }
+
+  .bubble.in {
+    background: #fff;
+    color: var(--ink);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+
+  .bubble.out {
+    background: var(--green-500);
+    color: #fff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+
+  .bubble.tag {
+    align-self: flex-end;
+    background: transparent;
+    box-shadow: none;
+    padding: 2px 4px 6px;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--green-700);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .bubble.tag::before {
+    content: "";
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green-500);
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .bubble { animation: none; }
+    .btn, .btn-primary:hover, .btn-dark:hover { transition: none; }
+  }
+
+  .float-card {
+    position: absolute;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 12px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .float-card.lead {
+    top: 62px;
+    right: -14px;
+    color: var(--green-700);
+  }
+
+  .float-card.reminder {
+    bottom: 90px;
+    left: -22px;
+    color: var(--coral-dark);
+  }
+
+  .float-card .icon {
+    width: 24px; height: 24px; border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .float-card.lead .icon { background: var(--green-100); }
+  .float-card.reminder .icon { background: #FFE7DF; }
+  .float-card svg { width: 13px; height: 13px; }
+
+  /* ---------- Logos / stat strip ---------- */
+
+  .strip {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 34px 0;
+    background: var(--card);
+  }
+
+  .strip-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+
+  .strip-item { padding: 0 12px; }
+
+  .strip-item .k {
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .strip-item .d {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ---------- Section headers ---------- */
+
+  .section {
+    padding: 96px 0;
+  }
+
+  .section-head {
+    max-width: 640px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+
+  .section-head .eyebrow { margin-bottom: 16px; }
+
+  h2.section-title {
+    font-size: 36px;
+    font-weight: 800;
+    margin: 0 0 14px;
+    line-height: 1.2;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 16.5px;
+  }
+
+  /* ---------- Feature blocks ---------- */
+
+  .feature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    padding: 56px 0;
+  }
+
+  .feature-row + .feature-row { border-top: 1px solid var(--line); }
+
+  .feature-row.reverse .feature-copy { order: 2; }
+  .feature-row.reverse .feature-visual { order: 1; }
+
+  .feature-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--green-500), var(--green-700));
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 22px;
+    box-shadow: 0 8px 18px rgba(15, 107, 76, 0.3);
+  }
+
+  .feature-icon svg { width: 24px; height: 24px; color: #fff; }
+
+  h3.feature-title {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 0 0 14px;
+  }
+
+  .feature-copy p.lead-text {
+    font-size: 16px;
+    color: var(--muted);
+    margin: 0 0 20px;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14.5px;
+    color: var(--ink);
+  }
+
+  .feature-list svg {
+    width: 18px; height: 18px;
+    color: var(--green-600);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .feature-visual {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 26px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Mini widgets inside visuals */
+
+  .mini-chat { display: flex; flex-direction: column; gap: 10px; }
+  .mini-row { display: flex; gap: 10px; align-items: flex-start; }
+  .mini-row .bubble { position: static; animation: none; max-width: 85%; }
+
+  .lead-card {
+    background: var(--green-50);
+    border: 1px solid var(--green-100);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .lead-card .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+
+  .lead-card .row .label { color: var(--muted); }
+  .lead-card .row .val { font-weight: 700; color: var(--navy); }
+
+  .pill {
+    display: inline-flex;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 700;
+  }
+
+  .pill.hot { background: #FFE7DF; color: var(--coral-dark); }
+  .pill.warm { background: #FFF3D6; color: #A6720B; }
+  .pill.positive { background: var(--green-100); color: var(--green-700); }
+
+  .bar-track {
+    height: 8px;
+    background: var(--line);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--green-500), var(--green-700));
+  }
+
+  .rule-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--green-50);
+    border: 1px solid var(--green-100);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+
+  .rule-card .step {
+    width: 26px; height: 26px;
+    border-radius: 8px;
+    background: var(--green-600);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .rule-arrow {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    padding: 2px 0;
+  }
+
+  .chart-mock {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 120px;
+    padding: 0 4px;
+  }
+
+  .chart-mock .col {
+    flex: 1;
+    background: linear-gradient(180deg, var(--green-500), var(--green-700));
+    border-radius: 6px 6px 0 0;
+    opacity: 0.9;
+  }
+
+  .assistant-bubble {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .assistant-bubble .q { opacity: 0.7; font-size: 11.5px; margin-bottom: 6px; }
+
+  /* ---------- How it works ---------- */
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .step-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px 26px;
+    position: relative;
+  }
+
+  .step-num {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: var(--green-100);
+    color: var(--green-700);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+
+  .step-card h3 { font-size: 18px; margin: 0 0 10px; }
+  .step-card p { font-size: 14px; color: var(--muted); margin: 0; }
+
+  /* ---------- CTA band ---------- */
+
+  .cta-band {
+    background: linear-gradient(135deg, var(--green-700), var(--green-900));
+    border-radius: 28px;
+    padding: 64px 56px;
+    text-align: center;
+    margin: 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-band::before {
+    content: "";
+    position: absolute;
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(255,107,74,0.25), transparent 70%);
+    top: -120px; right: -80px;
+  }
+
+  .cta-band h2 {
+    color: #fff;
+    font-size: 32px;
+    margin: 0 0 14px;
+    position: relative;
+  }
+
+  .cta-band p {
+    color: rgba(255,255,255,0.78);
+    font-size: 16px;
+    max-width: 480px;
+    margin: 0 auto 30px;
+    position: relative;
+  }
+
+  .cta-band .hero-ctas { justify-content: center; position: relative; }
+
+  /* ---------- Footer ---------- */
+
+  footer {
+    padding: 64px 0 36px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr repeat(3, 1fr);
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .footer-about p {
+    color: var(--muted);
+    font-size: 13.5px;
+    max-width: 280px;
+    margin: 14px 0 0;
+  }
+
+  .footer-col h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--navy);
+    margin: 0 0 16px;
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .footer-col a:hover { color: var(--navy); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 26px;
+    font-size: 13px;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* ---------- Responsive ---------- */
+
+  @media (max-width: 920px) {
+    nav.links { display: none; }
+    .nav-toggle { display: flex; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .phone-stage { margin-top: 40px; }
+    h1.hero-title { font-size: 38px; }
+    .strip-inner { grid-template-columns: repeat(2, 1fr); }
+    .feature-row, .feature-row.reverse { grid-template-columns: 1fr; }
+    .feature-row.reverse .feature-copy,
+    .feature-row.reverse .feature-visual { order: initial; }
+    .steps { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .cta-band { padding: 48px 28px; margin: 0 16px; }
+    .cta-band h2 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#top" class="skip-link">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 2L4 6V12C4 16.5 7.5 20.7 12 22C16.5 20.7 20 16.5 20 12V6L12 2Z" fill="white" fill-opacity="0.95"/>
+          <path d="M9 12.5L11 14.5L15 10" stroke="#0F6B4C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      WhatsPilot
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <a href="#" class="btn btn-ghost btn-sm">Log in</a>
+      <!--
+        TODO: +14155238886 is Twilio's shared WhatsApp Sandbox number, used
+        as a placeholder until WhatsPilot has its own dedicated WhatsApp
+        Business number (see whatspilot-admin-repo/provisioning/orchestrator.py -
+        every provisioned business currently shares this one Sandbox number).
+        Two things to fix once a real number is live:
+          1. Find/replace 14155238886 with the new number everywhere below
+             (nav, hero, CTA band - 4 links total).
+          2. The Sandbox requires a visitor to first text "join <code>" to
+             this number before it'll reply to anything else - a dedicated
+             production number won't have that restriction, so the
+             prefilled message text can drop any join-step wording once
+             that happens.
+      -->
+      <a href="https://wa.me/14155238886?text=Hi%20WhatsPilot%21%20I%20want%20to%20try%20the%20AI%20assistant%20for%20my%20business." class="btn btn-primary btn-sm" target="_blank" rel="noopener">Start Free</a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMobileMenu()">
+        <svg id="nav-toggle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile">
+    <a href="#features" onclick="closeMobileMenu()">Features</a>
+    <a href="#how-it-works" onclick="closeMobileMenu()">How it works</a>
+    <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> AI-powered WhatsApp CRM</span>
+        <h1 class="hero-title">Turn every WhatsApp chat into <span class="accent">a sale, not a scroll.</span></h1>
+        <p class="hero-sub">WhatsPilot replies to customers instantly, scores every lead automatically, and reminds your team what to do next — so no WhatsApp conversation ever goes cold.</p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/14155238886?text=Hi%20WhatsPilot%21%20I%20want%20to%20try%20the%20AI%20assistant%20for%20my%20business." class="btn btn-primary" target="_blank" rel="noopener">Start Free Trial</a>
+          <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
+        </div>
+        <div class="hero-note">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          No credit card required · Live in under 10 minutes
+        </div>
+      </div>
+
+      <div class="phone-stage">
+        <div class="float-card lead">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" fill="#12805A"/></svg></span>
+          Lead score: 87 · Hot
+        </div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-bar">
+              <span class="avatar">RS</span>
+              <div>
+                Riya's Boutique
+                <div class="status">AI Assistant · online</div>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="bubble in">Hi! Do you have the blue kurta set in size M?</div>
+              <div class="bubble out">Yes! The Blue Chikankari Kurta Set is in stock in size M — ₹2,199, ships in 2 days. Want me to share more photos or place the order for you?</div>
+              <div class="bubble tag">Auto-replied in 4s</div>
+              <div class="bubble in">Yes please, and do you do COD?</div>
+              <div class="bubble out">Cash on delivery is available for your area. I've saved your order — you'll get a confirmation link right here on WhatsApp.</div>
+              <div class="bubble tag">Buying stage: Ready to Buy</div>
+            </div>
+          </div>
+        </div>
+        <div class="float-card reminder">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 8v4l3 3" stroke="#E85234" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#E85234" stroke-width="1.8"/></svg></span>
+          Follow-up set for tomorrow
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="wrap strip-inner">
+      <div class="strip-item">
+        <div class="k">Instant replies</div>
+        <div class="d">Day or night, every message gets answered</div>
+      </div>
+      <div class="strip-item">
+        <div class="k">Zero manual entry</div>
+        <div class="d">Every chat becomes a scored CRM lead</div>
+      </div>
+      <div class="strip-item">
+        <div class="k">No-code automation</div>
+        <div class="d">Rules handle the follow-ups for you</div>
+      </div>
+      <div class="strip-item">
+        <div class="k">One dashboard</div>
+        <div class="d">See pipeline, revenue, and health at a glance</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="dot"></span> Everything in one place</span>
+        <h2 class="section-title">The complete WhatsApp business toolkit</h2>
+        <p class="section-sub">From the first "Hi" to the final follow-up, WhatsPilot handles the busywork so your team can focus on closing.</p>
+      </div>
+
+      <!-- Feature 1: AI Auto-Reply -->
+      <div class="feature-row">
+        <div class="feature-copy">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a7 7 0 00-7 7c0 2.4 1.2 4.5 3 5.8V19l3-1.5c.3 0 .7.05 1 .05a7 7 0 000-14z" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><circle cx="9" cy="10" r="1" fill="white"/><circle cx="12" cy="10" r="1" fill="white"/><circle cx="15" cy="10" r="1" fill="white"/></svg>
+          </div>
+          <h3 class="feature-title">AI replies trained on your business — not a generic bot</h3>
+          <p class="lead-text">Point WhatsPilot at your website, product docs, or FAQs and it learns how to answer like your best salesperson. When a conversation needs a human touch, it hands off cleanly instead of guessing.</p>
+          <ul class="feature-list">
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Learns from your own website and documents automatically</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Answers instantly, 24/7, in your business's voice</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Detects frustration or a direct request and hands off to your team</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <div class="mini-chat">
+            <div class="mini-row"><div class="bubble in">What are your delivery charges to Mumbai?</div></div>
+            <div class="mini-row" style="justify-content:flex-end;"><div class="bubble out">Delivery to Mumbai is free above ₹999, otherwise it's ₹79. Want me to check a specific order?</div></div>
+            <div class="bubble tag" style="align-self:flex-end;">Trained on: shipping-policy.pdf</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 2: CRM Lead Intelligence -->
+      <div class="feature-row reverse">
+        <div class="feature-copy">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" stroke="white" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="feature-title">Every conversation becomes a scored, organized lead</h3>
+          <p class="lead-text">No more copying chats into a spreadsheet. WhatsPilot reads each conversation and automatically fills in lead score, buying stage, sentiment, and next best action.</p>
+          <ul class="feature-list">
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Automatic lead scoring and buying-stage detection</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Sentiment and intent tracked on every message</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Full customer timeline — no digging through chat history</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <div class="lead-card">
+            <div class="row"><span class="label">Customer</span><span class="val">Arjun Mehta</span></div>
+            <div class="row"><span class="label">Lead score</span><span class="val">87 / 100</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:87%;"></div></div>
+            <div class="row"><span class="label">Buying stage</span><span class="pill hot">Ready to Buy</span></div>
+            <div class="row"><span class="label">Sentiment</span><span class="pill positive">Positive</span></div>
+            <div class="row"><span class="label">Next action</span><span class="val">Send payment link</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3: Automation -->
+      <div class="feature-row">
+        <div class="feature-copy">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 6V3M12 21v-3M6 12H3M21 12h-3M7.8 7.8L5.6 5.6M18.4 18.4l-2.2-2.2M7.8 16.2l-2.2 2.2M18.4 5.6l-2.2 2.2" stroke="white" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" stroke="white" stroke-width="1.8"/></svg>
+          </div>
+          <h3 class="feature-title">Automation rules that follow up so you don't have to</h3>
+          <p class="lead-text">Build rules in plain language, no code: "If a lead goes quiet for 2 days, create a reminder." WhatsPilot watches every conversation and fires the right action automatically.</p>
+          <ul class="feature-list">
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> No-code rule builder for reminders, tags, and alerts</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Triggers based on lead score, status, or inactivity</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> A live follow-up queue so nothing slips through</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div class="rule-card"><span class="step">IF</span> Lead status = "Hot" and no reply in 24h</div>
+            <div class="rule-arrow">↓</div>
+            <div class="rule-card"><span class="step">DO</span> Create a follow-up reminder for the sales team</div>
+            <div class="rule-arrow">↓</div>
+            <div class="rule-card"><span class="step">TAG</span> Mark conversation as "Needs attention"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 4: Analytics + AI Assistant -->
+      <div class="feature-row reverse">
+        <div class="feature-copy">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="feature-title">A dashboard that tells you what to do, not just what happened</h3>
+          <p class="lead-text">Track revenue trends, pipeline health, and customer risk in one view — then just ask your AI manager assistant a question, in plain English, instead of digging through charts.</p>
+          <ul class="feature-list">
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Revenue trends, forecast, and win-rate tracking</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Customer health scoring flags who's at risk</li>
+            <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Ask "how many hot leads do I have?" and get a real answer</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <div class="chart-mock" style="margin-bottom:18px;">
+            <div class="col" style="height:35%"></div>
+            <div class="col" style="height:55%"></div>
+            <div class="col" style="height:40%"></div>
+            <div class="col" style="height:70%"></div>
+            <div class="col" style="height:60%"></div>
+            <div class="col" style="height:90%"></div>
+          </div>
+          <div class="assistant-bubble">
+            <div class="q">You asked</div>
+            "How's this week looking compared to last?"
+          </div>
+          <div class="lead-card" style="background:#fff; border-color:var(--line);">
+            <div class="row"><span class="label">Revenue trend</span><span class="val" style="color:var(--green-700);">↑ Up this week</span></div>
+            <div class="row"><span class="label">Hot leads</span><span class="val">12</span></div>
+            <div class="row"><span class="label">Needs attention</span><span class="val">3 customers</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how-it-works" style="background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="dot"></span> Simple setup</span>
+        <h2 class="section-title">Live on WhatsApp in three steps</h2>
+        <p class="section-sub">No developers, no long onboarding calls.</p>
+      </div>
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Connect your WhatsApp number</h3>
+          <p>Already have a WhatsApp Business number? Connect it in a few clicks. Starting fresh? We'll help you set one up — no app for your customers to install either way.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Let WhatsPilot learn your business</h3>
+          <p>Point it at your website or upload your docs, and set your tone. It's ready to answer like you would.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Automate, track, and grow</h3>
+          <p>Turn on a few automation rules, and watch leads, reminders, and revenue flow into one dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap" style="max-width:760px;">
+      <div class="section-head">
+        <span class="eyebrow"><span class="dot"></span> Good to know</span>
+        <h2 class="section-title">Frequently asked questions</h2>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="step-card">
+          <h3 style="margin-bottom:8px;">Do I need to change my WhatsApp number?</h3>
+          <p style="color:var(--muted); font-size:14.5px; margin:0;">No. WhatsPilot connects to the WhatsApp Business number you already use — your customers message the same number as always.</p>
+        </div>
+        <div class="step-card">
+          <h3 style="margin-bottom:8px;">What if I don't have a WhatsApp Business number yet?</h3>
+          <p style="color:var(--muted); font-size:14.5px; margin:0;">No problem — we'll walk you through setting one up. It only takes a few minutes to get connected, and you can start chatting with customers the same day.</p>
+        </div>
+        <div class="step-card">
+          <h3 style="margin-bottom:8px;">Will the AI ever say something wrong to a customer?</h3>
+          <p style="color:var(--muted); font-size:14.5px; margin:0;">It only answers from the content you give it. When a question is outside that, or a customer sounds frustrated, WhatsPilot hands the conversation to your team instead of guessing.</p>
+        </div>
+        <div class="step-card">
+          <h3 style="margin-bottom:8px;">Can my whole team use it?</h3>
+          <p style="color:var(--muted); font-size:14.5px; margin:0;">Yes — your team can jump into any conversation, reply manually, and see the same lead and CRM data the AI does.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" style="padding: 20px 0 100px;">
+    <div class="cta-band">
+      <h2>Ready to put your WhatsApp on autopilot?</h2>
+      <p>Start free, connect your number in minutes, and see your first automated reply today.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/14155238886?text=Hi%20WhatsPilot%21%20I%20want%20to%20try%20the%20AI%20assistant%20for%20my%20business." class="btn btn-primary" target="_blank" rel="noopener">Start Free Trial</a>
+        <a href="https://wa.me/14155238886?text=Hi%20WhatsPilot%21%20I%20want%20to%20book%20a%20demo." class="btn" style="background:rgba(255,255,255,0.12); color:#fff; border:1px solid rgba(255,255,255,0.3);" target="_blank" rel="noopener">Book a Demo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="#top" class="brand">
+          <span class="mark">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L4 6V12C4 16.5 7.5 20.7 12 22C16.5 20.7 20 16.5 20 12V6L12 2Z" fill="white" fill-opacity="0.95"/><path d="M9 12.5L11 14.5L15 10" stroke="#0F6B4C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          WhatsPilot
+        </a>
+        <p>The AI co-pilot for WhatsApp business — auto-replies, CRM, automation, and analytics in one place.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#" onclick="event.preventDefault(); showToast('Our About page is coming soon — in the meantime, reach out at ramkumarsamqa.ai@gmail.com.');">About</a>
+        <a href="mailto:ramkumarsamqa.ai@gmail.com">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#" onclick="event.preventDefault(); showToast('Our Privacy Policy is being finalized — email ramkumarsamqa.ai@gmail.com with any questions.');">Privacy Policy</a>
+        <a href="#" onclick="event.preventDefault(); showToast('Our Terms of Service are being finalized — email ramkumarsamqa.ai@gmail.com with any questions.');">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 WhatsPilot. All rights reserved.</span>
+      <span>Built for businesses who live on WhatsApp.</span>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+  var HAMBURGER_PATH = '<path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+  var CLOSE_PATH = '<path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+  var toastTimer = null;
+
+  function showToast(message) {
+    var toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toast.classList.remove('show');
+    }, 4000);
+  }
+
+  function toggleMobileMenu() {
+    var menu = document.getElementById('mobile-menu');
+    var toggle = document.querySelector('.nav-toggle');
+    var icon = document.getElementById('nav-toggle-icon');
+    var isOpen = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    icon.innerHTML = isOpen ? CLOSE_PATH : HAMBURGER_PATH;
+  }
+
+  function closeMobileMenu() {
+    var menu = document.getElementById('mobile-menu');
+    if (menu.classList.contains('open')) {
+      toggleMobileMenu();
+    }
+  }
+</script>
+
+</body>
+</html>
