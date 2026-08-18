@@ -837,6 +837,44 @@
     gap: 12px;
   }
 
+  /* ---------- WhatsApp QR widget (desktop-only) ---------- */
+  /* Skips the api.whatsapp.com "Continue to Chat" hop for desktop
+     visitors - they scan straight into WhatsApp on their phone instead
+     of clicking through an extra page and a Web-login QR. Hidden below
+     921px (matches the nav's own mobile breakpoint) since wa.me already
+     opens the WhatsApp app directly with zero friction on mobile -
+     scanning your own phone's screen doesn't make sense there. */
+  .qr-widget { display: none; }
+
+  @media (min-width: 921px) {
+    .qr-widget {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 18px;
+      padding: 12px 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      max-width: fit-content;
+    }
+  }
+
+  .qr-widget img { width: 76px; height: 76px; border-radius: 8px; flex-shrink: 0; }
+
+  .qr-widget .qr-copy { font-size: 13px; color: var(--muted); line-height: 1.4; }
+
+  .qr-widget .qr-copy strong { display: block; color: var(--ink); font-size: 14px; margin-bottom: 2px; }
+
+  .qr-widget.on-dark {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.18);
+    margin: 22px auto 0;
+  }
+
+  .qr-widget.on-dark .qr-copy { color: rgba(255,255,255,0.8); }
+  .qr-widget.on-dark .qr-copy strong { color: #fff; }
+
   /* ---------- Responsive ---------- */
 
   @media (max-width: 920px) {
@@ -915,6 +953,16 @@
         <div class="hero-note">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           No credit card required · Live in under 10 minutes
+        </div>
+        <!-- Desktop-only: lets a laptop visitor scan straight into WhatsApp
+             on their phone instead of the multi-hop web.whatsapp.com login
+             flow. Hidden on mobile via CSS (see .qr-widget). -->
+        <div class="qr-widget">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeoAAAHqCAIAAABED5ptAAAL4klEQVR4nO3dO7IkSRFAURprEY0VsP9FsQI09Ic6KGFjEx3tfuudo9cvM+taKG7+4+vr628A1Px9+gsA8FfIN0CSfAMkyTdAknwDJMk3QJJ8AyTJN0CSfAMkyTdAknwDJMk3QJJ8AyTJN0CSfAMkyTdAknwDJMk3QJJ8AyT9vHnxP/75r1/1PZb473/+/eidb67Vzbc6f+75nd9953ffaudr35n6DxafyZ1urqTTN0CSfAMkyTdAknwDJMk3QJJ8AyTJN0CSfAMkyTdA0tXU5dnUHNrZu6mtd7NkO6cfz6Ym63bOVe6cFD2b+r03vltznL4BkuQbIEm+AZLkGyBJvgGS5BsgSb4BkuQbIEm+AZIeTl2evZtE2rmvcud+v52ThDd27pws7m/cudvzxuc9dU7fAEnyDZAk3wBJ8g2QJN8ASfINkCTfAEnyDZAk3wBJY1OX383U3N3ObYc33m2GnNo5WdxXeePz5jmnOH0DJMk3QJJ8AyTJN0CSfAMkyTdAknwDJMk3QJJ8AySZulzh3czejXfzfu+2hr577Y3iPSru5/xunL4BkuQbIEm+AZLkGyBJvgGS5BsgSb4BkuQbIEm+AZLGpi6/20a7qR2MZzd3YedmyBvF7zw1G1n8/xa/85nTN0CSfAMkyTdAknwDJMk3QJJ8AyTJN0CSfAMkyTdA0sOpy++2DW9qu6OdhH80Nf14Y2ras/jas+/2tDt9AyTJN0CSfAMkyTdAknwDJMk3QJJ8AyTJN0CSfAMk/fj6+pr+Dhk7Z7reTantnOec2nV5NnUXbuycftw5GbuT0zdAknwDJMk3QJJ8AyTJN0CSfAMkyTdAknwDJMk3QNLV1GVxZu9sauKruKHx7POejXeK843Fz31n6h/q9A2QJN8ASfINkCTfAEnyDZAk3wBJ8g2QJN8ASfINkDS26/Ld1NbOzYE33s0o7px+3Hl/b+y8ku/s3HX5ebs9nb4BkuQbIEm+AZLkGyBJvgGS5BsgSb4BkuQbIEm+AZJ+3rx4as7wxs55sJt3npqs+7zPLT7PZ1MbR3dusyzOVZ45fQMkyTdAknwDJMk3QJJ8AyTJN0CSfAMkyTdAknwDJD3cdblzTuls597Ine88tSfz3ezcznnOqXv03XZO3pjqldM3QJJ8AyTJN0CSfAMkyTdAknwDJMk3QJJ8AyTJN0DS0qnLnXZO5b3zedOeO1/7jquxwbur4fQNkCTfAEnyDZAk3wBJ8g2QJN8ASfINkCTfAEnyDZD08+bFO/cZTrmZrdr5e3fu53zn5i5MbeB8N9G3c8Z46mrsfGKdvgGS5BsgSb4BkuQbIEm+AZLkGyBJvgGS5BsgSb4Bkq6mLnfuyivOgu78vTfefaubd955rXb+F4pP3U7vuuH0DZAk3wBJ8g2QJN8ASfINkCTfAEnyDZAk3wBJ8g2Q9HDX5bs9e+9myfijqd2AO/cZ7pz1ffedi3fw8+7RmdM3QJJ8AyTJN0CSfAMkyTdAknwDJMk3QJJ8AyTJN0DS1dTl2btZozMbOP+8m7m77za/OnU1dj45Z1OTsWfFf/eZ0zdAknwDJMk3QJJ8AyTJN0CSfAMkyTdAknwDJMk3QNKPr6+vkQ+emlP6vJnMqe2O7+ycrLthCvHPKz51N+y6BPh25BsgSb4BkuQbIEm+AZLkGyBJvgGS5BsgSb4Bkq52XU5NfL1758/bVzk10Xc2NVlXfDaK3+ps58TmznndM6dvgCT5BkiSb4Ak+QZIkm+AJPkGSJJvgCT5BkiSb4Ckpbsu7bv7PYqzczunEHf6vHs0NZ+88xc5fQMkyTdAknwDJMk3QJJ8AyTJN0CSfAMkyTdAknwDJD2cuizuYHzn3Vyl6/x77NzQuPPuF2dfpyafbzh9AyTJN0CSfAMkyTdAknwDJMk3QJJ8AyTJN0CSfAMkXU1d7tw6ODXfOGXnZN2NqT2oO6/GWXFf5dnO+3s2dfedvgGS5BsgSb4BkuQbIEm+AZLkGyBJvgGS5BsgSb4Bkn7evHjn1NbZu4m+nb/obOeWxRvF+/vuW529+4e+u1Y77+/Uf8HpGyBJvgGS5BsgSb4BkuQbIEm+AZLkGyBJvgGS5Bsg6Wrq8t301DtT04BTds4KvjP1raY2jr6zc6q2uAnzHadvgCT5BkiSb4Ak+QZIkm+AJPkGSJJvgCT5BkiSb4Ckq6nLs+Lux8/zbifh1FRe8f7u3Pu6c2525/3d+U9x+gZIkm+AJPkGSJJvgCT5BkiSb4Ak+QZIkm+AJPkGSHo4dXnjZsZp5yzZjZ17FHfOCu6c2bsx9V+YmhQtbmedeiadvgGS5BsgSb4BkuQbIEm+AZLkGyBJvgGS5BsgSb4Bkn58fX09euudk1dTds4o3ti56/LdjGLxHt2Ymm/ceY9uvLu/Tt8ASfINkCTfAEnyDZAk3wBJ8g2QJN8ASfINkCTfAElXuy6n5iqL2/9ufLcZtp17Ms2R/qp3Pr92567LnfOcTt8ASfINkCTfAEnyDZAk3wBJ8g2QJN8ASfINkCTfAElLd13uNDV3d6O4v/Hz5mbf2TmFuHOm+vOeK6dvgCT5BkiSb4Ak+QZIkm+AJPkGSJJvgCT5BkiSb4Ckq6lLM2y/x84ti1PvfPO57xR/0ef9Q6e2WU5Nezp9AyTJN0CSfAMkyTdAknwDJMk3QJJ8AyTJN0CSfAMkfeCuy3fbHadmq955tznwbOc777xH7+ycjN056zu1U/TM6RsgSb4BkuQbIEm+AZLkGyBJvgGS5BsgSb4BkuQbIOnnzYt3boY8m5r3O3Ml//w7n918bvE7n03Nke6cfpx653ecvgGS5BsgSb4BkuQbIEm+AZLkGyBJvgGS5BsgSb4Bkq52XX7epsR3inv2Pm8z5LsndueOzZ130PP8qzh9AyTJN0CSfAMkyTdAknwDJMk3QJJ8AyTJN0CSfAMkXU1dnhVnnKbmSG/svJJnUzO3U7ORO2eMi1fjxuf9f52+AZLkGyBJvgGS5BsgSb4BkuQbIEm+AZLkGyBJvgGSHk5dvlPcWLhz7u7mc89c59/zuZ93Nc6K3+odp2+AJPkGSJJvgCT5BkiSb4Ak+QZIkm+AJPkGSJJvgKSxXZfvFLfwvTO1z/Ds8yYJv9tT5x79ns89c/oGSJJvgCT5BkiSb4Ak+QZIkm+AJPkGSJJvgCT5Bkj6efPidzN77+bQipshd9o5WXc2dZ2npkzPdk5O7rz7O3dsOn0DJMk3QJJ8AyTJN0CSfAMkyTdAknwDJMk3QJJ8AyQ93HX5eaamTD9vnrO4gfNs5wTjzTvf+Lxv9c7N73X6BkiSb4Ak+QZIkm+AJPkGSJJvgCT5BkiSb4Ak+QZIerjrsug8AbVz392NqUnRqX2GOyf63s2gTm2VfOfd/d05CXzm9A2QJN8ASfINkCTfAEnyDZAk3wBJ8g2QJN8ASfINkHQ1dXk2NYl0djNp9m5K7d3E17u7sPP+Tv3eqRnUnc/kOzvnZqc4fQMkyTdAknwDJMk3QJJ8AyTJN0CSfAMkyTdAknwDJD2cujybmhZ7593eyJvXTl2Nz9vQ+O4XvZtvnHomb+ycfty5CdPpGyBJvgGS5BsgSb4BkuQbIEm+AZLkGyBJvgGS5BsgaWzq8vO8m7yamp17953ffaudM6hnO/dkvnvqivsqd15np2+AJPkGSJJvgCT5BkiSb4Ak+QZIkm+AJPkGSJJvgCRTl7/Mzq2Sxc+dmqucupJTv/fdPOfZ1Ezm1O+16xKA/yPfAEnyDZAk3wBJ8g2QJN8ASfINkCTfAEnyDZD04+vr6y+/+LvtFZx65xtTuy4/bybz7N2+yqnXnu38RWc7v9UNp2+AJPkGSJJvgCT5BkiSb4Ak+QZIkm+AJPkGSJJvgKSHuy6nNge+c/OLpia+pvb73fhuE6pT+yqLz4aZzD9y+gZIkm+AJPkGSJJvgCT5BkiSb4Ak+QZIkm+AJPkGSLradQnAFKdvgCT5BkiSb4Ak+QZIkm+AJPkGSJJvgCT5BkiSb4Ak+QZIkm+AJPkGSJJvgCT5BkiSb4Ak+QZIkm+AJPkGSJJvgKT/AcrirIB9BhDWAAAAAElFTkSuQmCC" alt="Scan to chat with WhatsPilot on WhatsApp" width="76" height="76">
+          <div class="qr-copy">
+            <strong>On a laptop?</strong>
+            Scan with your phone for a one-tap chat — no browser sign-in needed.
+          </div>
         </div>
       </div>
 
@@ -1207,6 +1255,13 @@
       <div class="hero-ctas">
         <a href="https://wa.me/16206709780?text=Hi%20WhatsPilot%21%20I%20want%20to%20try%20the%20AI%20assistant%20for%20my%20business." class="btn btn-primary" target="_blank" rel="noopener">Start Free Trial</a>
         <a href="https://wa.me/16206709780?text=Hi%20WhatsPilot%21%20I%20want%20to%20book%20a%20demo." class="btn" style="background:rgba(255,255,255,0.12); color:#fff; border:1px solid rgba(255,255,255,0.3);" target="_blank" rel="noopener">Book a Demo</a>
+      </div>
+      <div class="qr-widget on-dark">
+        <img src="data:image/png;base64,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" alt="Scan to chat with WhatsPilot on WhatsApp" width="76" height="76">
+        <div class="qr-copy">
+          <strong>On a laptop?</strong>
+          Scan with your phone for a one-tap chat.
+        </div>
       </div>
     </div>
   </section>
